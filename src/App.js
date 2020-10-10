@@ -19,12 +19,14 @@ const App = () => {
             style={styles.userInput}
             placeholder='Username'
             keyboardType='email-address'
+            autoCapitalize={'none'}
           />
 
           <TextInput 
             style={styles.userInput}
             placeholder='Password'
             secureTextEntry={true}
+            autoCapitalize={'none'}
           />
 
           <TouchableOpacity 
