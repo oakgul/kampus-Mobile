@@ -1,61 +1,65 @@
-import 'react-native-gesture-handler';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { connect } from 'react-redux';
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <View style={styles.home}>
-        <View style={styles.logo}>
-          <Image
-          source={require('./assets/logo.png')} />
-          {/* <Text>KAMPUS HAYATINDA CEBİNDEKİ ASİSTANIN</Text> */}
-        </View>
-        <View style={styles.homeInputs}>
-          <Text style={styles.sign}>Giriş Yap</Text>
-          <TextInput 
-            style={styles.userInput}
-            placeholder='Username'
-            keyboardType='email-address'
-            autoCapitalize={'none'}
-          />
-
-          <TextInput 
-            style={styles.userInput}
-            placeholder='Password'
-            secureTextEntry={true}
-            autoCapitalize={'none'}
-          />
-
-          <TouchableOpacity 
-            style={styles.signButton}
-            onPress={() => alert('Giriş yapıldı..')} 
-          >
-            <Text style={styles.signButtonText}>Giriş Yap</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => alert('Şifremi unuttum sayfası')} 
-            style={styles.forgotPassword}>
-            <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
-          </TouchableOpacity>
-
-          <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
-
-          <View style={styles.account}>
-            <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
-            <TouchableOpacity 
-              onPress={() => alert('Hesap Oluştur Sayfası')}
-              style={styles.forgotPassword}>
-              <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+class App extends Component {
+  render() {
+    return (
+      <View>
+        <Text> { this.props.userReducer } </Text>
       </View>
-    </NavigationContainer>
-  );
+      
+      // <NavigationContainer>
+      //   <View style={styles.home}>
+      //     <View style={styles.logo}>
+      //       <Image
+      //       source={require('./assets/logo.png')} />
+      //       {/* <Text>KAMPUS HAYATINDA CEBİNDEKİ ASİSTANIN</Text> */}
+      //     </View>
+      //     <View style={styles.homeInputs}>
+      //       <Text style={styles.sign}>Giriş Yap</Text>
+      //       <TextInput 
+      //         style={styles.userInput}
+      //         placeholder='Username'
+      //         keyboardType='email-address'
+      //         autoCapitalize={'none'}
+      //       />
+  
+      //       <TextInput 
+      //         style={styles.userInput}
+      //         placeholder='Password'
+      //         secureTextEntry={true}
+      //         autoCapitalize={'none'}
+      //       />
+  
+      //       <TouchableOpacity 
+      //         style={styles.signButton}
+      //         onPress={() => alert('Giriş yapıldı..')} 
+      //       >
+      //         <Text style={styles.signButtonText}>Giriş Yap</Text>
+      //       </TouchableOpacity>
+  
+      //       <TouchableOpacity
+      //         onPress={() => alert('Şifremi unuttum sayfası')} 
+      //         style={styles.forgotPassword}>
+      //         <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
+      //       </TouchableOpacity>
+  
+      //       <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
+  
+      //       <View style={styles.account}>
+      //         <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
+      //         <TouchableOpacity 
+      //           onPress={() => alert('Hesap Oluştur Sayfası')}
+      //           style={styles.forgotPassword}>
+      //           <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
+      //         </TouchableOpacity>
+      //       </View>
+      //     </View>
+      //   </View>
+      // </NavigationContainer>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -112,4 +116,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);
