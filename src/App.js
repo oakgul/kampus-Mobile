@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { updateUser, getUsers } from './redux/actions/userAction';
+
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.onGetUsers();
+  }
+
   render() {
     return (
       <View>
@@ -120,4 +127,9 @@ const mapStateToProps = state => {
   return state;
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  onUpdateUser : updateUser,
+  onGetUsers : getUsers,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
