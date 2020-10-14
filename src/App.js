@@ -1,70 +1,92 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { updateUser, getUsers } from './redux/actions/userAction';
+import { userSign } from './redux/actions/userAction';
 
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.onGetUsers();
+  state = {
+    username : '',
+    password : null,
+  }
+
+  userLogin = () => {
+    this.props.onUserLogin(this.state.username, this.state.password);
   }
 
   render() {
     return (
-      <View>
-        <Text> { this.props.userReducer } </Text>
-      </View>
+      // <View>
+      //   <Text> { this.props.userReducer } </Text>
+      // </View>
       
-      // <NavigationContainer>
-      //   <View style={styles.home}>
-      //     <View style={styles.logo}>
-      //       <Image
-      //       source={require('./assets/logo.png')} />
-      //       {/* <Text>KAMPUS HAYATINDA CEBİNDEKİ ASİSTANIN</Text> */}
-      //     </View>
-      //     <View style={styles.homeInputs}>
-      //       <Text style={styles.sign}>Giriş Yap</Text>
-      //       <TextInput 
-      //         style={styles.userInput}
-      //         placeholder='Username'
-      //         keyboardType='email-address'
-      //         autoCapitalize={'none'}
-      //       />
+        <View style={styles.home}>
+          <View style={styles.logo}>
+            <Image
+            source={require('./assets/logo.png')} />
+          </View>
+         
+          <Text> { this.props.userReducer.token } </Text>
+          <Text> { this.props.userReducer.tag } </Text>
+
+
+          <View style={styles.homeInputs}>
+            <Text style={styles.sign}>Giriş Yap</Text>
+            <TextInput 
+              style={styles.userInput}
+              placeholder='Username'
+              returnKeyType={"next"}
+              keyboardType='email-address'
+              autoCapitalize={'none'}
+              autoCorrect={false}
+              onChangeText={text => {
+                this.setState({
+                  username : text
+                })
+              }}
+              value={this.state.username}
+            />
   
-      //       <TextInput 
-      //         style={styles.userInput}
-      //         placeholder='Password'
-      //         secureTextEntry={true}
-      //         autoCapitalize={'none'}
-      //       />
+            <TextInput 
+              style={styles.userInput}
+              placeholder='Password'
+              secureTextEntry={true}
+              autoCapitalize={'none'}
+              onChangeText={text => {
+                this.setState({
+                  password : text
+                })
+              }}
+              value={this.state.password}
+              
+            />
   
-      //       <TouchableOpacity 
-      //         style={styles.signButton}
-      //         onPress={() => alert('Giriş yapıldı..')} 
-      //       >
-      //         <Text style={styles.signButtonText}>Giriş Yap</Text>
-      //       </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.signButton}
+              onPress={this.userLogin} 
+            >
+              <Text style={styles.signButtonText}>Giriş Yap</Text>
+            </TouchableOpacity>
   
-      //       <TouchableOpacity
-      //         onPress={() => alert('Şifremi unuttum sayfası')} 
-      //         style={styles.forgotPassword}>
-      //         <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
-      //       </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => alert('Şifremi unuttum sayfası')} 
+              style={styles.forgotPassword}>
+              <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
+            </TouchableOpacity>
   
-      //       <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
+            <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
   
-      //       <View style={styles.account}>
-      //         <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
-      //         <TouchableOpacity 
-      //           onPress={() => alert('Hesap Oluştur Sayfası')}
-      //           style={styles.forgotPassword}>
-      //           <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-      //   </View>
-      // </NavigationContainer>
+            <View style={styles.account}>
+              <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
+              <TouchableOpacity 
+                onPress={() => alert('Hesap Oluştur Sayfası')}
+                style={styles.forgotPassword}>
+                <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
     );
   }
 };
@@ -128,8 +150,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  onUpdateUser : updateUser,
-  onGetUsers : getUsers,
+  onUserLogin : userSign
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

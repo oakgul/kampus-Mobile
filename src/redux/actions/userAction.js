@@ -1,20 +1,54 @@
-export const USER_UPDATE = 'USER_UPDATE'
+export const USER_LOGIN = 'USER_LOGIN'
 
-export function updateUser(newUser) {
+export function userLogin(success, token, tag) {
     return {
-        type : 'USER_UPDATE',
+        type : 'USER_LOGIN',
         payload : {
-            user : newUser
+          success,
+          token,
+          tag
         }
     }
 }
 
-export function getUsers() {
-    return dispatch => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res => res.json())
-        // .then(users => console.log(users))
-        .then(user => user.map(data => console.log(data.name)))
-        .catch(err => console.log(err))
+
+export function userSign(username, password) {
+    return async dispatch => {
+      const res = await fetch('https://kampus-api.herokuapp.com/api/auth/login', {
+          method : 'POST',
+          body : JSON.stringify({
+    
+            email : username,
+            password : password     
+          }),
+          headers: {
+            'Content-type' : 'application/json; charset=UTF-8'
+          }
+          });
+
+          const user = await res.json();
+
+          console.log(user.access_token)
+          console.log(user.data.tag)
+          console.log(user.success)
+          dispatch(userLogin(user.success, user.access_token, user.data.tag))
+          
     }
-}
+  
+  
+  
+  // return fetch('https://kampus-api.herokuapp.com/api/auth/login', {
+    //   method : 'POST',
+    //   body : JSON.stringify({
+
+    //     email : username,
+    //     password : password     
+    //   }),
+    //   headers: {
+    //     'Content-type' : 'application/json; charset=UTF-8'
+    //   }
+    //   })
+    //   .then(data => data.json())
+    //   .then(user => console.log(user))
+    //   .catch(err => console.log(err)) 
+  }
