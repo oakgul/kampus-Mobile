@@ -26,6 +26,10 @@ export function userSign(username, password) {
           }
           });
 
+          if(!res.success) {
+            alert('Kullanıcı adı yada şifre yanlış! Lütfen bilgilerinizi kontrol edin!')
+          }
+          
           const user = await res.json();
 
           console.log(user.access_token)
