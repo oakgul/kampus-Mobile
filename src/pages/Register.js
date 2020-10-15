@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { userRegister } from '../redux/actions/userAction';
 
  class Register extends Component {
-
     state = {
         name : null,
         surname : null,
