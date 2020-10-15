@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { userSign } from './redux/actions/userAction';
+import Register from './pages/Register';
 
 
 class App extends Component {
@@ -20,73 +21,77 @@ class App extends Component {
       // <View>
       //   <Text> { this.props.userReducer } </Text>
       // </View>
+
+      <View>
+        <Register />
+      </View>
       
-        <View style={styles.home}>
-          <View style={styles.logo}>
-            <Image
-            source={require('./assets/logo.png')} />
-          </View>
+        // <View style={styles.home}>
+        //   <View style={styles.logo}>
+        //     <Image
+        //     source={require('./assets/logo.png')} />
+        //   </View>
          
-          <Text> { this.props.userReducer.token } </Text>
-          <Text> { this.props.userReducer.tag } </Text>
+        //   <Text> { this.props.userReducer.token } </Text>
+        //   <Text> { this.props.userReducer.tag } </Text>
 
 
-          <View style={styles.homeInputs}>
-            <Text style={styles.sign}>Giriş Yap</Text>
-            <TextInput 
-              style={styles.userInput}
-              placeholder='Username'
-              returnKeyType={"next"}
-              keyboardType='email-address'
-              autoCapitalize={'none'}
-              autoCorrect={false}
-              onChangeText={text => {
-                this.setState({
-                  username : text
-                })
-              }}
-              value={this.state.username}
-            />
+        //   <View style={styles.homeInputs}>
+        //     <Text style={styles.sign}>Giriş Yap</Text>
+        //     <TextInput 
+        //       style={styles.userInput}
+        //       placeholder='Username'
+        //       returnKeyType={"next"}
+        //       keyboardType='email-address'
+        //       autoCapitalize={'none'}
+        //       autoCorrect={false}
+        //       onChangeText={text => {
+        //         this.setState({
+        //           username : text
+        //         })
+        //       }}
+        //       value={this.state.username}
+        //     />
   
-            <TextInput 
-              style={styles.userInput}
-              placeholder='Password'
-              secureTextEntry={true}
-              autoCapitalize={'none'}
-              onChangeText={text => {
-                this.setState({
-                  password : text
-                })
-              }}
-              value={this.state.password}
+        //     <TextInput 
+        //       style={styles.userInput}
+        //       placeholder='Password'
+        //       secureTextEntry={true}
+        //       autoCapitalize={'none'}
+        //       onChangeText={text => {
+        //         this.setState({
+        //           password : text
+        //         })
+        //       }}
+        //       value={this.state.password}
               
-            />
+        //     />
   
-            <TouchableOpacity 
-              style={styles.signButton}
-              onPress={this.userLogin} 
-            >
-              <Text style={styles.signButtonText}>Giriş Yap</Text>
-            </TouchableOpacity>
+        //     <TouchableOpacity 
+        //       style={styles.signButton}
+        //       onPress={this.userLogin} 
+        //     >
+        //       <Text style={styles.signButtonText}>Giriş Yap</Text>
+        //     </TouchableOpacity>
   
-            <TouchableOpacity
-              onPress={() => alert('Şifremi unuttum sayfası')} 
-              style={styles.forgotPassword}>
-              <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
-            </TouchableOpacity>
+        //     <TouchableOpacity
+        //       onPress={() => alert('Şifremi unuttum sayfası')} 
+        //       style={styles.forgotPassword}>
+        //       <Text style={{color:'#1877f2'}}>Şifremi unuttum</Text>
+        //     </TouchableOpacity>
   
-            <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
+        //     <View style={{borderBottomWidth: 1, borderColor: '#CEBEBA'}}></View>
   
-            <View style={styles.account}>
-              <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
-              <TouchableOpacity 
-                onPress={() => alert('Hesap Oluştur Sayfası')}
-                style={styles.forgotPassword}>
-                <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+        //     <View style={styles.account}>
+        //       <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
+        //       <TouchableOpacity 
+        //         onPress={() => alert('Hesap Oluştur Sayfası')}
+        //         style={styles.forgotPassword}>
+        //         <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
+        //       </TouchableOpacity>
+        //     </View>
+        //   </View>
+        // </View>
     );
   }
 };

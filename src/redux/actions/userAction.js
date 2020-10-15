@@ -1,10 +1,9 @@
 export const USER_LOGIN = 'USER_LOGIN'
 
-export function userLogin(success, token, tag) {
+export function userLogin(token, tag) {
     return {
         type : 'USER_LOGIN',
         payload : {
-          success,
           token,
           tag
         }
@@ -30,7 +29,7 @@ export function userSign(username, password) {
           if(!user.success) {
             alert('Kullanıcı adı yada parola yanlış!')
           }else{
-            dispatch(userLogin(user.success, user.access_token, user.data.tag))    
+            dispatch(userLogin(user.access_token, user.data.tag))    
           }
       }
   }
