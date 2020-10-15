@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { userSign } from './redux/actions/userAction';
+// import Register from './pages/Dashboard';
 import Dashboard from './pages/Dashboard';
 
 
@@ -85,7 +86,8 @@ class App extends Component {
       //       <View style={styles.account}>
       //         <Text style={{color:'#CEBEBA', marginRight: 10}}>Hesabın yok mu?</Text>
       //         <TouchableOpacity 
-      //           onPress={() => alert('Hesap Oluştur Sayfası')}
+      //           // onPress={() => alert('Hesap Oluştur sayfası')}
+      //           onPress={() => alert('Register Page..')}
       //           style={styles.forgotPassword}>
       //           <Text style={{color:'#1877f2'}}>Hesap oluştur</Text>
       //         </TouchableOpacity>
