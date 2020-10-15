@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { connect } from 'react-redux';
+import { userRegister } from '../redux/actions/userAction';
 
  class Register extends Component {
 
@@ -11,6 +13,19 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
         gender : null,
         department : null,
         role : null
+    }
+
+    userCreateAccount = () => {
+        const user = this.state;
+        this.props.onRegisterUser(
+            user.name,
+            user.surname,   
+            user.email,   
+            user.password,   
+            user.gender,   
+            user.department,   
+            user.role,   
+        );
     }
 
     render() {
@@ -31,8 +46,13 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         placeholder='Ad'
                         returnKeyType={"next"}
                         // keyboardType='name'
-                        // autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                name : text
+                            })
+                        }}
+                        value={this.state.name}
                     />
 
                     <TextInput 
@@ -40,8 +60,13 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         placeholder='Soyad'
                         returnKeyType={"next"}
                         // keyboardType='name'
-                        // autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                surname : text
+                            })
+                        }}
+                        value={this.state.surname}
                     />
 
                     <TextInput 
@@ -51,6 +76,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         keyboardType='email-address'
                         autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                email : text
+                            })
+                        }}
+                        value={this.state.email}
                     />
 
                     <TextInput 
@@ -61,6 +92,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         // keyboardType='name'
                         autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                password : text
+                            })
+                        }}
+                        value={this.state.password}
                     />
 
                     <TextInput 
@@ -70,6 +107,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         // keyboardType='name'
                         autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                gender : text
+                            })
+                        }}
+                        value={this.state.gender}
                     />
 
                     <TextInput 
@@ -79,6 +122,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         // keyboardType='name'
                         autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                department : text
+                            })
+                        }}
+                        value={this.state.department}
                     />
 
                     <TextInput 
@@ -88,10 +137,16 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView 
                         // keyboardType='name'
                         autoCapitalize={'none'}
                         autoCorrect={false}
+                        onChangeText={text => {
+                            this.setState({
+                                role : text
+                            })
+                        }}
+                        value={this.state.role}
                     />
 
                     <TouchableOpacity 
-                        onPress={() => alert('Kayıt olundu...')}
+                        onPress={this.userCreateAccount}
                         style={styles.registerButton}
                         >
                         <Text style={styles.reagisterButtonText}>Kayıt Ol</Text>
@@ -152,6 +207,14 @@ const styles = StyleSheet.create({
         color:'white', 
         fontWeight: 'bold'
       },
-})
+});
 
-export default Register;
+const mapStateToProps = state => {
+    return state;
+}
+
+const mapDispatchToProps = {
+    onRegisterUser : userRegister,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
