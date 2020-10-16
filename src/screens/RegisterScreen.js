@@ -36,7 +36,7 @@ import { userRegister } from '../redux/actions/userAction';
                 </View>
 
                 
-
+            <ScrollView>
                 <View style={styles.Inputs}>
                 <Text style={styles.registerText}>Kayıt Ol..</Text>
 
@@ -150,7 +150,15 @@ import { userRegister } from '../redux/actions/userAction';
                         >
                         <Text style={styles.reagisterButtonText}>Kayıt Ol</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        onPress={() => this.props.navigation.navigate('Forgot')}
+                        style={styles.registerButton}
+                        >
+                        <Text style={styles.reagisterButtonText}>Register Page</Text>
+                    </TouchableOpacity>
                 </View>
+                </ScrollView>
 
                 
             </View>
