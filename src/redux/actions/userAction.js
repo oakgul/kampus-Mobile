@@ -15,6 +15,7 @@ export function userLogin(token, tag) {
 //   }
 // };
 
+// REGISTER
 export function userRegister(name,surname,email,password,gender,department,role) {
   return async dispatch => {
     const res = await fetch('https://kampus-api.herokuapp.com/api/auth/register', {
@@ -35,14 +36,17 @@ export function userRegister(name,surname,email,password,gender,department,role)
 
         const result = await res.json();
         console.log(result);
-        // if(!user.success) {
-        //   alert('Kullanıcı adı yada parola yanlış!')
-        // }else{
-        //   dispatch(userLogin(user.access_token, user.data.tag))    
-        // }
+        if(!result.success) {
+          alert('Bilgilerinizin doğru olduğundan emin olun!')
+        }else{
+          alert('Kayıt işlemi başarılı..')
+          // this.props.navigation.navigate('Login')
+          // dispatch(userLogin(user.access_token, user.data.tag))    
+        }
     }
 };
 
+// LOGIN
 export function userSign(username, password) {
     return async dispatch => {
       const res = await fetch('https://kampus-api.herokuapp.com/api/auth/login', {

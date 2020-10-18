@@ -30,7 +30,7 @@ import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from 'reac
 
                     <TouchableOpacity 
                         style={styles.signButton}
-                        onPress={() => alert('e-posta gönderildi...')} 
+                        onPress={() => alert('E-posta gönderildi...')} 
                     >
                     <Text style={styles.submitButtonText}>İleri</Text>
                     </TouchableOpacity>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     headText: {
         fontSize: 20,
         fontWeight: 'bold',
-        // paddingVertical:10,
     },
     infoText: {
         fontSize: 15,

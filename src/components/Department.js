@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-class ShareAnnounceScreen extends Component {
+class Department extends Component {
     render() {
         return (
             <View>
-                <Text> Share Announce page </Text>
+                <Text> DepartmentScreen page.. </Text>
             </View>
         )
     }
 }
 
-export default ShareAnnounceScreen;
+export default Department;

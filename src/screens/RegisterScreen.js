@@ -25,6 +25,7 @@ import { userRegister } from '../redux/actions/userAction';
             user.department,   
             user.role,   
         );
+        
     }
 
     render() {

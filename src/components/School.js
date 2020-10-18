@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-class DepartmentScreen extends Component {
+class School extends Component {
     render() {
         return (
             <View>
-                <Text> DepartmentScreen page.. </Text>
+                <Text> SchoolScreen page.. </Text>
             </View>
         )
     }
 }
 
-export default DepartmentScreen;
+export default School;

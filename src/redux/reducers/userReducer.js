@@ -1,8 +1,7 @@
 import { USER_LOGIN } from '../actions/userAction';
 
 const initialState = {
-    // success : false,
-    token : '122sa234da5435d6y7a7sd21AYuc393809',
+    token : null,
     tag : 'bilgisayar'
 }
 
