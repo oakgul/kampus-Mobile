@@ -150,13 +150,6 @@ import { userRegister } from '../redux/actions/userAction';
                         >
                         <Text style={styles.reagisterButtonText}>Kayıt Ol</Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity 
-                        onPress={() => this.props.navigation.navigate('Forgot')}
-                        style={styles.registerButton}
-                        >
-                        <Text style={styles.reagisterButtonText}>Register Page</Text>
-                    </TouchableOpacity>
                 </View>
                 </ScrollView>
 
@@ -175,7 +168,6 @@ const styles = StyleSheet.create({
 
       logo: {
         flex: 1,
-        // justifyContent: 'center',
         marginTop: 20,
         alignItems: 'center'
       }, 
@@ -187,7 +179,8 @@ const styles = StyleSheet.create({
       },
 
       Inputs : {
-        marginTop: 60
+        marginTop: 60,
+        paddingVertical: 30
       },
 
     userInput: {

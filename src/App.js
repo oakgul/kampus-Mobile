@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-// import { View, Text } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +18,6 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   )
-}
+};
 
 export default App;
