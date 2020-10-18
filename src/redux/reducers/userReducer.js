@@ -2,7 +2,7 @@ import { USER_LOGIN } from '../actions/userAction';
 
 const initialState = {
     token : null,
-    tag : 'bilgisayar'
+    tag : ''
 }
 
 function userReducer(state = initialState, action) {
