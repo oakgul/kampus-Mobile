@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { userSign } from '../redux/actions/userAction';
 

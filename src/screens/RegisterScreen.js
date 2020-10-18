@@ -29,14 +29,13 @@ import { userRegister } from '../redux/actions/userAction';
 
     render() {
         return (
-            <View style={styles.home}>
-                <View style={styles.logo}>
-                 <Image
-                    source={require('../assets/logo.png')} />
-                </View>
+            <View style={styles.home}>        
+                <ScrollView>
+                    <View style={styles.logo}>
+                        <Image
+                        source={require('../assets/logo.png')} />
+                    </View>
 
-                
-            <ScrollView>
                 <View style={styles.Inputs}>
                 <Text style={styles.registerText}>Kayıt Ol..</Text>
 
@@ -161,52 +160,46 @@ import { userRegister } from '../redux/actions/userAction';
 
 const styles = StyleSheet.create({
     home: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-
-      logo: {
-        flex: 1,
-        marginTop: 20,
-        alignItems: 'center'
-      }, 
-
-      registerText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10
-      },
-
-      Inputs : {
-        marginTop: 60,
-        paddingVertical: 30
-      },
-
+      flex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    logo: {
+      marginTop: 20,
+      alignItems: 'center'
+    }, 
+    registerText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginBottom: 10
+    },
+    Inputs : {
+      marginTop: 30,
+      paddingVertical: 30
+    },
     userInput: {
-        width: 300,
-        height: 50,
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#CEBEBA',
-        marginBottom: 15, 
-        paddingVertical: 10,
-        paddingLeft: 15   
-      },
-
-      registerButton: {
-        width: 300,
-        height: 50,
-        backgroundColor: '#31B057',
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center'
-      },
-      reagisterButtonText: {
-        fontSize:20, 
-        color:'white', 
-        fontWeight: 'bold'
-      },
+      width: 300,
+      height: 50,
+      borderWidth: 1,
+      borderRadius: 5,
+      borderColor: '#CEBEBA',
+      marginBottom: 15, 
+      paddingVertical: 10,
+      paddingLeft: 15   
+    },
+    registerButton: {
+      width: 300,
+      height: 50,
+      backgroundColor: '#31B057',
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    reagisterButtonText: {
+      fontSize:20, 
+      color:'white', 
+      fontWeight: 'bold'
+    },
 });
 
 const mapStateToProps = state => {
