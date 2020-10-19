@@ -17,13 +17,13 @@ class Department extends Component {
                   }
               })
               const result = await res.json();
-              result.data.map(schoolAnnounce => {
-                  if(schoolAnnounce.tag == 'kimya'){
+              result.data.map(departmentAnnounce => {
+                  if(departmentAnnounce.tag == this.props.userReducer.tag){
                       this.setState({
-                        announces : [...this.state.announces, schoolAnnounce]
+                        announces : [...this.state.announces, departmentAnnounce]
                     })
                   }else{
-                    console.log('tag kimya DEĞİL!!!!')                      
+                    null                     
                   }
               })
     }
@@ -36,10 +36,18 @@ class Department extends Component {
     renderAllAnnounce = ({item, index}) => {
         return(
             <TouchableOpacity style={styles.announce}>
-                <Text>{item.title}</Text>
-                <Text>{item.content}</Text>
-                <Text>{item.user}</Text>
-                <Text>{item._id}</Text>
+                <View style={styles.imageContainer}>
+                    <Image
+                        style={styles.image} 
+                        source={require('../assets/profile.jpg')}
+                    />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text>{item.content}</Text>
+                    {/* <Text>{item.user}</Text>
+                    <Text>{item._id}</Text> */}
+                </View>
             </TouchableOpacity>
         )
     }
@@ -50,7 +58,14 @@ class Department extends Component {
                 { this.loading ? <Text>Loading...</Text> : <FlatList 
                 renderItem={this.renderAllAnnounce}
                 data={this.state.announces}
+                keyExtractor={item => item._id}
             /> }
+
+                <TouchableOpacity 
+                    onPress={() => this.props.navigation.navigate('Duyuru')}
+                    style={styles.shareButton}>
+                        <Text style={styles.shareText}>Duyuru</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -58,13 +73,45 @@ class Department extends Component {
 
 const styles = StyleSheet.create({
     announce: {
-        // width: '80%',
+        flex:1,
+        flexDirection:'row',
         height: 80,
-        backgroundColor: '#FFC300',
-        marginLeft:10,
-        marginRight:10,
-        marginBottom:10,
+        backgroundColor: '#E74C3C',
+        marginTop: 10,
+        marginRight: 5,
+        marginLeft: 5,
         borderRadius: 7,
+    },
+    imageContainer: {
+        paddingHorizontal: 10,
+        justifyContent: 'center',
+    },
+    image: {
+        width:60,
+        height: 60,
+        borderRadius: 30
+    },
+    textContainer: {
+        marginTop: 6
+    },
+    title: {
+        fontSize: 18,
+        color: 'white'
+    },
+    shareButton: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        backgroundColor: '#DAF7A6',
+        borderWidth: 1,
+        position: "absolute",
+        right: 10,
+        bottom: 10
+    },
+    shareText: {
+        textAlign: 'center',
+        marginTop: 35
+
     }
 });
 

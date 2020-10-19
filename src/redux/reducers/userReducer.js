@@ -2,7 +2,7 @@ import { USER_LOGIN } from '../actions/userAction';
 
 const initialState = {
     token : null,
-    tag : 'kimya'
+    tag : null
 }
 
 function userReducer(state = initialState, action) {

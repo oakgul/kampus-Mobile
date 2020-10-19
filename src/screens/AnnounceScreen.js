@@ -12,7 +12,7 @@ class AnnounceScreen extends Component {
             <Tab.Navigator>
                 <Tab.Screen name="Bölüm" component={DepartmentScreen} />
                 <Tab.Screen name="Okul" component={SchoolScreen} />
-                {/* <Tab.Screen name="Duyuru" component={ShareAnnounce} /> */}
+                <Tab.Screen name="Duyuru" component={ShareAnnounce} />
             </Tab.Navigator>
         )
     }

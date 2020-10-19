@@ -23,7 +23,7 @@ class School extends Component {
                         announces : [...this.state.announces, schoolAnnounce]
                     })
                   }else{
-                    console.log('tag okul DEĞİL!!!!')                      
+                    null                      
                   }
               })
     }

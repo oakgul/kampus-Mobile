@@ -39,9 +39,7 @@ export function userRegister(name,surname,email,password,gender,department,role)
         if(!result.success) {
           alert('Bilgilerinizin doğru olduğundan emin olun!')
         }else{
-          alert('Kayıt işlemi başarılı..')
-          // this.props.navigation.navigate('Login')
-          // dispatch(userLogin(user.access_token, user.data.tag))    
+          alert('Kayıt işlemi başarılı..')   
         }
     }
 };
@@ -66,6 +64,31 @@ export function userSign(username, password) {
             alert('Kullanıcı adı yada parola yanlış!')
           }else{
             dispatch(userLogin(user.access_token, user.data.tag))    
+          }
+      }
+  };
+
+  export function shareAnAnnounce(title, content, department, token) {
+    return async dispatch => {
+      const res = await fetch('https://kampus-api.herokuapp.com/api/announce/share', {
+          method : 'POST',
+          body : JSON.stringify({
+    
+            title,
+            content,
+            department    
+          }),
+          headers: {
+            'Content-type' : 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer: ' + token
+          }
+          });
+
+          const user = await res.json();
+          if(!user.success) {
+            alert('Hata!! Alanları doldurun!')
+          }else{
+            alert('Duyuru yayınlandı')    
           }
       }
   };
