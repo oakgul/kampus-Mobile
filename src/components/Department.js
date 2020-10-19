@@ -17,11 +17,15 @@ class Department extends Component {
                   }
               })
               const result = await res.json();
-              this.setState({
-                announces : result.data
+              result.data.map(schoolAnnounce => {
+                  if(schoolAnnounce.tag == 'kimya'){
+                      this.setState({
+                        announces : [...this.state.announces, schoolAnnounce]
+                    })
+                  }else{
+                    console.log('tag kimya DEĞİL!!!!')                      
+                  }
               })
-            //   console.log(result.data);
-
     }
 
     componentDidMount() {

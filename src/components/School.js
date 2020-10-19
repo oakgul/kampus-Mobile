@@ -17,11 +17,15 @@ class School extends Component {
                   }
               })
               const result = await res.json();
-              this.setState({
-                announces : result.data
+              result.data.map(schoolAnnounce => {
+                  if(schoolAnnounce.tag == 'okul'){
+                      this.setState({
+                        announces : [...this.state.announces, schoolAnnounce]
+                    })
+                  }else{
+                    console.log('tag okul DEĞİL!!!!')                      
+                  }
               })
-            //   console.log(result.data);
-
     }
 
     componentDidMount() {
@@ -36,8 +40,8 @@ class School extends Component {
                 style={styles.announce}>
                 <Text>{item.title}</Text>
                 <Text>{item.content}</Text>
-                <Text>{item.user}</Text>
-                <Text>{item._id}</Text>
+                {/* <Text>{item.user}</Text>
+                <Text>{item._id}</Text> */}
             </TouchableOpacity>
         )
     }
